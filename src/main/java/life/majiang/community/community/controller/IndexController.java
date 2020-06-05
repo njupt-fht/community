@@ -16,6 +16,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(HttpServletRequest request){
+        //自动登录，在进入首页时先查看cookie，若有token就自动登录，否则需要重新登录
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             if(cookie.getName().equals("token")){
