@@ -1,33 +1,26 @@
 package life.majiang.community.community.controller;
 
-import life.majiang.community.community.mapper.UserMapper;
-import life.majiang.community.community.model.User;
+import life.majiang.community.community.dto.PaginationDTO;
+import life.majiang.community.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IndexController {
+
     @Autowired
-    private UserMapper userMapper;
+    private QuestionService questionService;
 
     @GetMapping("/")
-    public String index(HttpServletRequest request){
-        //自动登录，在进入首页时先查看cookie，若有token就自动登录，否则需要重新登录
-        Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if(cookie.getName().equals("token")){
-                String token = cookie.getValue();
-                User user = userMapper.findByToken(token);
-                if(user !=null){
-                    request.getSession().setAttribute("user",user);
-                }
-                break;
-            }
-        }
+    public String index(Model model,
+                        //分页，需要页面先传入两个参数，分别时page（当前页码）和size（每页展示的条数）
+                        @RequestParam(name = "page", defaultValue = "1") Integer page,
+                        @RequestParam(name = "size", defaultValue = "5") Integer size) {
+        PaginationDTO pagination = questionService.list(page, size);
+        model.addAttribute("pagination", pagination);
         return "index";
 
 
