@@ -5,6 +5,7 @@ import life.majiang.community.community.dto.GithubUser;
 import life.majiang.community.community.mapper.UserMapper;
 import life.majiang.community.community.model.User;
 import life.majiang.community.community.provider.GithubProvider;
+import life.majiang.community.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,7 @@ public class AuthorizeController {
     private String redirectUri;
 
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
 
     //在利用github账号登录时，首先会发送"https://github.com/login/oauth/authorize?client_id=b5b69b390c736df838c4&redirect_uri=http://localhost:8080/callback&scope=user&state=1"
     //然后github调用回调函数（github会返回code和state），这时网页再次利用已知的参数（封装成accessTokenDTO对象了）向github发送请求（post）以获取access_token,
@@ -57,10 +58,9 @@ public class AuthorizeController {
             user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
+
             user.setAvatarUrl(githubUser.getAvatarUrl());
-            userMapper.insert(user);
+            userService.createOrUpdate(user);
             response.addCookie(new Cookie("token", token));//将token写入cookie，用于自动登录
             //登录成功，写cookie和session
             //request.getSession().setAttribute("user",githubUser);//这里暂时没用了
@@ -69,6 +69,16 @@ public class AuthorizeController {
             //登录失败，重新登录
             return "redirect:/";
         }
+
+    }
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request,
+                         HttpServletResponse response){
+        request.getSession().removeAttribute("user");
+        Cookie cookie = new Cookie("token",null);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        return "redirect:/";
 
     }
 }

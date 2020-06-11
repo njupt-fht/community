@@ -21,6 +21,7 @@
 [octotree](https://www.octotree.io/)
 [Table of content sidebar]()
 [One Tab](https://chrome.google.com/webstore/detail/chphlpgkkbolifaimnlloiipkdnihall)
+[Postman](https://chrome.google.com/webstore/detail/tabbed-postman-rest-clien/coohjcphdfgbiolnekdpbcijmhambjff)
 
 ## 脚本
 ```sql
@@ -35,4 +36,5 @@ CREATE  TABLE USER(
 ```
 ```bash
 mvn flyway:migrate
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```
