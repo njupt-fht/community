@@ -6,16 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class PaginationDTO {
-    private List<QuestionDTO> questions;
+public class PaginationDTO<T> {
+    private List<T> data;
     private boolean showPrevious;//上一页
     private boolean showFirstPage;//第一页
     private boolean showNext;//下一页
     private boolean showEndPage;//最后一页
-    private Integer totalPage;
-
     private Integer page;//当前页
     private List<Integer> pages = new ArrayList<>();//一系列page
+    private Integer totalPage;
 
     public void setPagination(Integer totalPage, Integer page) {
         this.totalPage = totalPage;

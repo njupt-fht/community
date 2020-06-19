@@ -1,0 +1,14 @@
+2020-06-19 14:22:05.032  INFO 7248 --- [restartedMain] l.m.c.community.CommunityApplication     : Starting CommunityApplication on LAPTOP-UVI0B15D with PID 7248 (E:\FHT\code\community\target\classes started by fht in E:\FHT\code\community)
+2020-06-19 14:22:05.032  INFO 7248 --- [restartedMain] l.m.c.community.CommunityApplication     : No active profile set, falling back to default profiles: default
+2020-06-19 14:22:05.249  INFO 7248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-06-19 14:22:05.250  INFO 7248 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-19 14:22:05.250  INFO 7248 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-19 14:22:05.270  INFO 7248 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-19 14:22:05.271  INFO 7248 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 237 ms
+2020-06-19 14:22:05.398  INFO 7248 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-19 14:22:05.408  INFO 7248 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-06-19 14:22:05.472  INFO 7248 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-19 14:22:05.484  INFO 7248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-06-19 14:22:05.484  INFO 7248 --- [restartedMain] l.m.c.community.CommunityApplication     : Started CommunityApplication in 0.492 seconds (JVM running for 1754.23)
+2020-06-19 14:22:05.486  INFO 7248 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-06-19 14:22:21.442  INFO 7248 --- [Thread-31] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

@@ -18,9 +18,11 @@ public class IndexController {
     public String index(Model model,
                         //分页，需要页面先传入两个参数，分别时page（当前页码）和size（每页展示的条数）
                         @RequestParam(name = "page", defaultValue = "1") Integer page,
-                        @RequestParam(name = "size", defaultValue = "5") Integer size) {
-        PaginationDTO pagination = questionService.list(page, size);
+                        @RequestParam(name = "size", defaultValue = "5") Integer size,
+                        @RequestParam(name = "search", required = false) String search) {
+        PaginationDTO pagination = questionService.list(search, page, size);
         model.addAttribute("pagination", pagination);
+        model.addAttribute("search",search);
         return "index";
 
 
